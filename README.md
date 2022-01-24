@@ -8,4 +8,4 @@ __I don't recommend going above level 10 as the code might lag if you try to edi
 
 ### How to use?
 ```bat
-python3 BlankOBF.py <your_file>.py
+python3 BlankOBF.py
