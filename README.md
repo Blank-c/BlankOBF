@@ -4,7 +4,7 @@
 
 ## **Warning**
 
-__I don't recommend going above level 10 as the code might lag if you try to edit it!__
+__I don't recommend going above level 10 on large code as it might lag if you try to edit it!__
 
 ### How to use?
 ```bat
