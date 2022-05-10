@@ -1,6 +1,6 @@
 # **Blank Obfuscator**
 
-**High Quality Obfuscator with better code protection!**
+**Alternative, faster and offline version of [Online Python Obfuscator](https://development-tools.net/python-obfuscator/)**
 
 ## **Warning**
 
