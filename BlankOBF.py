@@ -55,7 +55,7 @@ def ____________(_____________):
         else:_____________=_____(_______("{self.__encodestring('______.b85decode')}(_____________[:-1])","",_____.__name__));_____________=_____(_______("{self.__encodestring('____.decode')}(_____________, '{self.__encodestring('hex')}')","",_____.__name__))
         _____________=_____(_______("{self.__encodestring('___________.decode')}(_____________)","",_____.__name__))
     return _____________
-_________________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[3]).encode()})","",_____.__name__));________________ = _____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[1]).encode()})","",_____.__name__));__________________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[2]).encode()})","",_____.__name__));______________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[0]).encode()})","",_____.__name__));_______________=_____(_______("{self.__encodestring('str.join')}('', {self.__encodestring('[____________(x) for x in [______________,________________,__________________,_________________]]')})","", _____.__name__));________(____.decode(____.decode(______.b64decode(_________(_______________)), "uu"),"bz2"))"""
+_________________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[3]).encode()})","",_____.__name__));________________ = _____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[1]).encode()})","",_____.__name__));__________________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[2]).encode()})","",_____.__name__));______________=_____(_______("{self.__encodestring('___________.decode')}({self.__encodestring(new_encoded_code[0]).encode()})","",_____.__name__));_______________=_____(_______("{self.__encodestring('str.join')}('', {self.__encodestring('[____________(x) for x in [______________,________________,__________________,_________________]]')})","", _____.__name__));________(____.decode(____.decode(______.b64decode(_________(_______________)), "{self.__encodestring("uu")}"),"{self.__encodestring("bz2")}"))"""
 
 def main():
     parser = argparse.ArgumentParser()
@@ -77,5 +77,6 @@ def main():
     with open(args.o, 'w', encoding='utf-8') as output_file:
         output_file.write(obfuscator.code)
     print(f"Saved as '{os.path.abspath(f'{os.path.basename(args.o)}')}'")
+
 if __name__ == '__main__':
     main()
