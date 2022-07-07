@@ -3,5 +3,5 @@
 
 Usage:
 ```batch
-python main.py [-h] [-l level] [-o path] SOURCE
+python BlankOBF.py [-h] [-l level] [-o path] SOURCE
 ```
