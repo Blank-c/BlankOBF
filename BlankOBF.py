@@ -42,7 +42,8 @@ class Obfuscator:
             new_encoded_code.append(codecs.encode(encoded_code[1], 'rot13') + 'r')
             new_encoded_code.append(codecs.encode(encoded_code[2].encode(), 'hex').decode() + 'h')
             new_encoded_code.append(base64.b85encode(codecs.encode(encoded_code[3].encode(), 'hex')).decode() + 'x')
-        self.code = f"""# https://github.com/Blank-c/BlankOBF
+        self.code = f"""# Obfuscated with BlankOBF
+# https://github.com/Blank-c/BlankOBF
 
 _____=eval;_______=_____("{self.__encodestring('compile')}");______,____=_____(_______("{self.__encodestring("__import__('base64')")}","",_____.__name__)),_____(_______("{self.__encodestring("__import__('codecs')")}","",_____.__name__));________, _________, __________,___________=_____(_______("{self.__encodestring('exec')}","",_____.__name__)),_____(_______("{self.__encodestring('str.encode')}","",_____.__name__)),_____(_______("{self.__encodestring('isinstance')}","",_____.__name__)),_____(_______("{self.__encodestring('bytes')}","",_____.__name__))
 def ____________(_____________):
