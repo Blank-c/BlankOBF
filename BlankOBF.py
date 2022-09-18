@@ -35,11 +35,10 @@ class Obfuscator:
         encoded_code = base64.b64encode(codecs.encode(codecs.encode(self.code.encode(), 'bz2'), 'uu')).decode()
         encoded_code = [encoded_code[i:i + int(len(encoded_code) / 4)] for i in range(0, len(encoded_code), int(len(encoded_code) / 4))]
         new_encoded_code = []
-        for i in range(4):
-            new_encoded_code.append(codecs.encode(encoded_code[0].encode(), 'uu').decode() + 'u')
-            new_encoded_code.append(codecs.encode(encoded_code[1], 'rot13') + 'r')
-            new_encoded_code.append(codecs.encode(encoded_code[2].encode(), 'hex').decode() + 'h')
-            new_encoded_code.append(base64.b85encode(codecs.encode(encoded_code[3].encode(), 'hex')).decode() + 'x')
+        new_encoded_code.append(codecs.encode(encoded_code[0].encode(), 'uu').decode() + 'u')
+        new_encoded_code.append(codecs.encode(encoded_code[1], 'rot13') + 'r')
+        new_encoded_code.append(codecs.encode(encoded_code[2].encode(), 'hex').decode() + 'h')
+        new_encoded_code.append(base64.b85encode(codecs.encode(encoded_code[3].encode(), 'hex')).decode() + 'x')
         self.code = f"""# Obfuscated with BlankOBF
 # https://github.com/Blank-c/BlankOBF
 
