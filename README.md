@@ -1,5 +1,5 @@
 # BlankOBF
-**A powerful obfuscator for python files.**
+**Makes a python script hard to read.**
 
 Usage:
 ```batch
