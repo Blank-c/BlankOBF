@@ -67,14 +67,14 @@ class BlankOBF:
         var4 = self.generate("h")
         var5 = self.generate("i")
         var6 = self.generate("j")
-        self.comments = list(["#____" + "".join(random.choices(string.ascii_letters + string.digits, k = len(self.xorkey))) for _ in range(29)]) + ["#____" + self.xorkey.decode()]
-        random.shuffle(self.comments)
-        self.comments = "# Obfuscated using https://github.com/Blank-c/BlankOBF\n\n" + "\n".join(self.comments)
+        comments = list(["#____" + "".join(random.choices(string.ascii_letters + string.digits, k = len(self.xorkey))) for _ in range(29)]) + ["#____" + self.xorkey.decode()]
+        random.shuffle(comments)
+        comments = "# Obfuscated using https://github.com/Blank-c/BlankOBF\n\n" + "\n".join(comments)
         
         self.code = f'''
 {var5} = {self.code}
 {var6} = []
-{var1} = [{var2}[5:].strip() for {var2} in __import__("base64").b64decode({base64.b64encode(self.comments.encode())}).decode().splitlines() if {var2}.startswith("#____")]
+{var1} = [{var2}[5:].strip() for {var2} in __import__("base64").b64decode({base64.b64encode(comments.encode())}).decode().splitlines() if {var2}.startswith("#____")]
 if len({var1}) < 30 or any([len(x) != {self.varlen} for x in {var1}]):
     __import__("os")._exit(0)
 for {var3} in {var1}:
