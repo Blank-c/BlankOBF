@@ -1,7 +1,7 @@
 # BlankOBF
-**Makes a python script hard to read.**
+**Obfuscates python program to make it harder to read.**
 
 Usage:
 ```batch
-python BlankOBF.py [-h] [-l level] [-o path] SOURCE
+python BlankOBF.py [-h] [-o PATH] FILE
 ```
