@@ -74,7 +74,7 @@ class BlankOBF:
         self.code = f'''
 {var5} = {self.code}
 {var6} = []
-{var1} = [{var2}[5:].strip() for {var2} in open(__file__).readlines() if {var2}.startswith("#____")]
+{var1} = [{var2}[5:].strip() for {var2} in __import__("base64").b64decode({base64.b64encode(self.comments.encode())}).decode().splitlines() if {var2}.startswith("#____")]
 if len({var1}) < 30 or any([len(x) != {self.varlen} for x in {var1}]):
     __import__("os")._exit(0)
 for {var3} in {var1}:
@@ -98,9 +98,7 @@ for {var3} in {var1}:
         if os.path.dirname(self.outpath).strip() != "":
             os.makedirs(os.path.dirname(self.outpath), exist_ok= True)
         with open(self.outpath, "w") as e:
-            e.write(
-                self.comments + "\n\n" + self.code.decode()
-            )
+            e.write(self.code.decode())
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog= sys.argv[0], description= "Obfuscates python program to make it harder to read")
