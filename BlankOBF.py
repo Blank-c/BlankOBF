@@ -73,8 +73,8 @@ class BlankOBF:
         
         self.code = f'''
 {var5} = {self.code}
-{var6} = []
-{var1} = [{var2}[5:].strip() for {var2} in __import__("base64").b64decode({base64.b64encode(comments.encode())}).decode().splitlines() if {var2}.startswith("#____")]
+{var6} = __import__("base64").b64decode({base64.b64encode(comments.encode())}).decode().splitlines()
+{var1} = [{var2}[5:].strip() for {var2} in {var6} if {var2}.startswith("#____")]
 if len({var1}) < 30 or any([len(x) != {self.varlen} for x in {var1}]):
     __import__("os")._exit(0)
 for {var3} in {var1}:
