@@ -82,11 +82,11 @@ for {var3} in {var1}:
     {var4} = {var3}
     for {var2}, {var3} in enumerate({var5}):
         {var6}[{var2}] = {var3} ^ {var4}.encode()[{var2} % len({var4})]
-        try:
-            __import__("builtins").exec(__import__("zlib").decompress(bytes({var6})))
-            __import__("os")._exit(0)
-        except __import__("zlib").error:
-            pass
+    try:
+        __import__("builtins").exec(__import__("zlib").decompress(bytes({var6})))
+        __import__("os")._exit(0)
+    except __import__("zlib").error:
+        pass
 '''.encode()
 
     def encrypt3(self):
