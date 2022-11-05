@@ -1,3 +1,6 @@
+# If you want to use this in your project (with or without modifications, please reference the below line)
+# https://github.com/Blank-c/BlankOBF
+
 import random, string, base64, codecs, argparse, os, sys
 
 from textwrap import wrap
@@ -8,8 +11,8 @@ class BlankOBF:
     def __init__(self, code, outputpath):
         self.code = code.encode()
         self.outpath = outputpath
-        self.varlen = 6
-        self.xorkey = "".join(random.choices(string.digits + string.ascii_letters, k = self.varlen)).encode()
+        self.varlen = 3
+        self.xorkey = "".join(random.choices(string.digits + string.ascii_letters, k = 6)).encode()
         self.vars = {}
 
         self.marshal()
@@ -21,12 +24,13 @@ class BlankOBF:
     def generate(self, name):
         res = self.vars.get(name)
         if res is None:
-            while True:
-                res = "_" + "".join(random.choices(string.ascii_letters + string.digits, k = self.varlen))
-                if res not in self.vars.values():
-                    break
+            res = "_" + "".join(["_" for _ in range(self.varlen)])
+            self.varlen += 1
             self.vars[name] = res
         return res
+    
+    def encryptstring(self, string):
+        return f'__import__("base64").b64decode(bytes({list(base64.b64encode(string.encode()))})).decode()'
     
     def compress(self):
         self.code = compress(self.code)
@@ -55,7 +59,7 @@ class BlankOBF:
         self.code = f'''
 # Obfuscated using https://github.com/Blank-c/BlankOBF
 
-{init};__import__("builtins").exec(__import__("marshal").loads(__import__("base64").b64decode(__import__("codecs").decode({var1}, __import__("base64").b64decode("{base64.b64encode(b'rot13').decode()}").decode())+{var2}+{var3}[::-1]+{var4})))
+{init};__import__({self.encryptstring("builtins")}).exec(__import__({self.encryptstring("marshal")}).loads(__import__({self.encryptstring("base64")}).b64decode(__import__({self.encryptstring("codecs")}).decode({var1}, __import__({self.encryptstring("base64")}).b64decode("{base64.b64encode(b'rot13').decode()}").decode())+{var2}+{var3}[::-1]+{var4})))
 '''.strip().encode()
     
     def encrypt2(self):
@@ -73,9 +77,9 @@ class BlankOBF:
         
         self.code = f'''
 {var5} = {self.code}
-{var6} = __import__("base64").b64decode({base64.b64encode(comments.encode())}).decode().splitlines()
+{var6} = __import__({self.encryptstring("base64")}).b64decode({base64.b64encode(comments.encode())}).decode().splitlines()
 {var1} = [{var2}[5:].strip() for {var2} in {var6} if {var2}.startswith("#____")]
-if len({var1}) < 30 or any([len(x) != {self.varlen} for x in {var1}]):
+if len({var1}) < 30 or any([len(x) != {len(self.xorkey)} for x in {var1}]):
     __import__("os")._exit(0)
 for {var3} in {var1}:
     {var6} = list({var5})
@@ -83,9 +87,9 @@ for {var3} in {var1}:
     for {var2}, {var3} in enumerate({var5}):
         {var6}[{var2}] = {var3} ^ {var4}.encode()[{var2} % len({var4})]
     try:
-        __import__("builtins").exec(__import__("zlib").decompress(bytes({var6})))
-        __import__("os")._exit(0)
-    except __import__("zlib").error:
+        __import__({self.encryptstring("builtins")}).exec(__import__({self.encryptstring("zlib")}).decompress(bytes({var6})))
+        __import__({self.encryptstring("os")})._exit(0)
+    except __import__({self.encryptstring("zlib")}).error:
         pass
 '''.encode()
 
