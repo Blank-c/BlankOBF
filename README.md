@@ -45,4 +45,4 @@ print(obfuscated_code)
 Keep in mind that while obfuscation can add a layer of complexity to your code, it's not a substitute for proper security measures. Always implement robust security practices to protect your intellectual property and sensitive data.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
