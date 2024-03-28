@@ -13,7 +13,7 @@
 python BlankOBFv2.py [-h] --input PATH [--output PATH] [--recursive N] [--include_imports]
 ```
 - **-h, --help:** Show the help message and exit.
-- **--input PATH:** Specify the input file or directory to be obfuscated.
+- **--input PATH:** Specify the input file to be obfuscated.
 - **--output PATH:** Optional flag to specify the output filename for the obfuscated code.
 - **--recursive N:** Optional flag to specify the depth of recursive obfuscation (default is 1).
 - **--include_imports:** Optional flag to include imports in the obfuscated file.
