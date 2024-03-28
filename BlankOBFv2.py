@@ -57,7 +57,7 @@ class BlankOBFv2:
     def _prepend_imports(self) -> None:
         for module, submodule in self._imports:
             if module is not None:
-                statement = "from %s import %s\n" % (module, statement)
+                statement = "from %s import %s\n" % (module, submodule)
             else:
                 statement = "import %s\n" % submodule
             self._code = statement + self._code
