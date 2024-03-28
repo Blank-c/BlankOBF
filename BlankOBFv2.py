@@ -56,9 +56,10 @@ class BlankOBFv2:
     
     def _prepend_imports(self) -> None:
         for module, submodule in self._imports:
-            statement = "import %s\n" % submodule
-            if module:
-                statement = "from %s " % module
+            if module is not None:
+                statement = "from %s import %s\n" % (module, statement)
+            else:
+                statement = "import %s\n" % submodule
             self._code = statement + self._code
     
     def _generate_random_name(self, value: str) -> str:
